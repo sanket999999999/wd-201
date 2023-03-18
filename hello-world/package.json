@@ -2,9 +2,9 @@
   "name":"hello-world",
   "version":"1.0.0",
   "description":"",
-  "main":"index.js"
+  "main":"index.js",
   "script":{
-    "test":"echo\"Error:no test specified"&&exit1
+    "test":"echo\"Error:no test specified\"&&exit1"
   },
   "author":"",
   "License":"ISC"
