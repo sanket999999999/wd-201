@@ -1,3 +1,7 @@
+const args = require("minimist")(process.argv.slice(2));
+p = args.port
+console.log(args.port); // prints the value of the --port option
+
 const http = require("http");
 const fs = require("fs");
 
@@ -41,4 +45,4 @@ http.createServer((request, response) => {
         break;
     }
   })
-  .listen(5000);
+  .listen(p);
