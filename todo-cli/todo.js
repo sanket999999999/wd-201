@@ -8,33 +8,42 @@ const todoList = () => {
   }
 
   const overdue = () => {
-  let now = new Date()
-  return all.filter(item => new Date(item.dueDate) < now && !item.completed)
-}
+    let today = new Date().toISOString().split('T')[0]
+    return all.filter(item => item.dueDate < today && !item.completed)
+  }
 
   const dueToday = () => {
-  let today = new Date().toISOString().split('T')[0]
-  return all.filter(item => item.dueDate === today && !item.completed)
-}
+    let today = new Date().toISOString().split('T')[0]
+    return all.filter(item => item.dueDate === today && !item.completed || item. completed)
+  }
 
-const dueLater = () => {
-  let today = new Date().toISOString().split('T')[0]
-  return all.filter(item => item.dueDate > today && !item.completed)
-}
+  const dueLater = () => {
+    let today = new Date().toISOString().split('T')[0]
+    return all.filter(item => item.dueDate > today && !item.completed)
+  }
 
   const toDisplayableList = (list) => {
-  let displayableList = ""
-  list.forEach((item, index) => {
-    let checkbox = item.completed ? "x" : " "
-    let formattedDueDate = item.dueDate ? ` ${item.dueDate}` : ""
-    displayableList += `[${checkbox}] ${item.title}${formattedDueDate}`
-    if (index !== list.length - 1) {
-      displayableList += "\n"
+    let output = ''
+    for (let i = 0; i < list.length; i++) {
+      let item = list[i]
+      let check = (item) =>{
+        if(item.completed == true){return '[x]'}
+        if(item.completed == false){return '[ ]'}
+        return '0'
+      }
+      let check1 = (item) =>{
+        if(item.completed == true){return 'hi'}
+        if(item.completed == false){return 'bye'}
+        return '0'
+      }
+      let checkbox = check(item)
+      let gliter = check1(item)
+      let title = item.title
+      let dueDate = item.dueDate
+      output += `${checkbox} ${title} ${dueDate}\n`
     }
-  })
-  return displayableList
-}
-
+    return output
+  }
 
   return {
     all,
@@ -46,7 +55,6 @@ const dueLater = () => {
     toDisplayableList
   };
 };
-
 // ####################################### #
 // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
 // ####################################### #
