@@ -40,6 +40,7 @@ const todoList = () => {
       let title = item.title
       let dueDate = duedate(item)
       output += `${checkbox} ${title} ${dueDate}\n`
+      '\n'
     }
     return output
   }
