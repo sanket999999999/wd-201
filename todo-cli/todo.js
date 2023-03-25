@@ -31,15 +31,14 @@ const todoList = () => {
         if(item.completed == false){return '[ ]'}
         return '0'
       }
-      let check1 = (item) =>{
-        if(item.completed == true){return 'hi'}
-        if(item.completed == false){return 'bye'}
-        return '0'
+      let duedate = (item) =>{
+        let today = new Date().toISOString().split('T')[0]
+        if (item.dueDate == today){return ' '}
+        else {return item.dueDate}
       }
       let checkbox = check(item)
-      let gliter = check1(item)
       let title = item.title
-      let dueDate = item.dueDate
+      let dueDate = duedate(item)
       output += `${checkbox} ${title} ${dueDate}\n`
     }
     return output
